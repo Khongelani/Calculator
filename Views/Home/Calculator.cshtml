@@ -1,0 +1,46 @@
+﻿@model WebCalculator.Models.Calc
+@{
+    ViewBag.Title = "Calculator";
+}
+
+<html>
+<head>
+</head>
+<body>
+    <h2>Calculator</h2>
+
+    <div class="row">
+        @using (Html.BeginForm("/Index", "calc", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label for="number1">Number 1:</label>
+                <input type="text" class="form-control" id="number1" name="number1" value="@Model.number1" />
+            </div>
+            <div class="form-group">
+                <label for="number2">Number 2:</label>
+                <input type="text" class="form-control" id="number2" name="number2" value="@Model.number2" />
+            </div>
+
+            <button type="submit" class="btn btn-secondary" id="add" value="add" name="calculate">+</button>
+            <button type="submit" class="btn btn-secondary" id="minus" value="minus" name="calculate">-</button>
+            <button type="submit" class="btn btn-secondary" id="multiply" value="multiply" name="calculate">*</button>
+            <button type="submit" class="btn btn-secondary" id="divide" value="divide" name="calculate">/</button>
+
+            <div class="form-group">
+                <label for="total">Total:</label>
+                <input type="text" class="form-control" id="total" name="total" value="@Model.total" />
+            </div>
+
+            <button type="submit" class="btn btn-info" id="add" value="add" name="calculate">+</button>
+            <button type="submit" class="btn btn-info" id="minus" value="minus" name="calculate">-</button>
+            <button type="submit" class="btn btn-info" id="multiply" value="multiply" name="calculate">*</button>
+            <button type="submit" class="btn btn-info" id="divide" value="divide" name="calculate">/</button>
+
+            <button type="submit" class="btn btn-info" id="m+" value="m+" name="calculate">M+</button>
+            <button type="submit" class="btn btn-info" id="m-" value="m-" name="calculate">M-</button>
+            <button type="submit" class="btn btn-info" id="recall" value="recall" name="calculate">Recall</button>
+        }
+    </div>
+</body>
+</html>
+

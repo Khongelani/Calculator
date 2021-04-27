@@ -1,0 +1,62 @@
+﻿@model WebCalculator.Models.Calc
+@{
+    ViewBag.Title = "View";
+    WebCalculator.Models.History calchistory = new WebCalculator.Models.History(Model.number1, Model.number2, Model.total);
+
+}
+
+<html>
+<head></head>
+<body>
+    <h2>Calculator</h2>
+
+    <div class="row">
+        @using (Html.BeginForm("/Index", "calc", FormMethod.Post))
+        {
+            var total_str = Model.total.ToString("N8");
+            <div class="form-group">
+                <label for="number1">Number 1:</label>
+                <input type="text" class="form-control" id="number1" name="number1" value="@Model.number1" />
+            </div>
+            <div class="form-group">
+                <label for="number2">Number 2:</label>
+                <input type="text" class="form-control" id="number2" name="number2" value="@Model.number2" />
+            </div>
+            <div>
+                <button type="submit" class="btn btn-secondary" id="add" value="add" name="calculate">+</button>
+                <button type="submit" class="btn btn-secondary" id="minus" value="minus" name="calculate">-</button>
+                <button type="submit" class="btn btn-secondary" id="multiply" value="multiply" name="calculate">*</button>
+                <button type="submit" class="btn btn-secondary" id="divide" value="divide" name="calculate">/</button>
+            </div>
+
+            <div class="form-group">
+                <label for="total">Total:</label>
+                <input type="text" class="form-control" id="total" name="total" value="@total_str" />
+            </div>
+
+            <div class="form-group">
+                <label for="memoryStore">Memory:</label>
+                <input type="text" class="form-control" id="memoryStore" name="memoryStore" value="@Model.memoryStore" />
+            </div>
+
+            <button type="submit" class="btn btn-info" id="m+" value="m+" name="calculate">M+</button>
+            <button type="submit" class="btn btn-info" id="m-" value="m-" name="calculate">M-</button>
+            <button type="submit" class="btn btn-info" id="recall" value="recall" name="calculate">Recall</button>
+            <button type="submit" class="btn btn-danger" id="clear" value="clear" name="clear" onclick="clearDataFunc()">Clear</button>
+        }
+        
+    </div>
+</body>
+</html>
+
+<script>
+    function clearDataFunc() {
+        confirm("Are you sure you want to clear your data!");
+        $('#number1').val('');
+        $('#number2').val('');
+        $('#total').val('');
+        $('#memoryStore').val('');
+        alert("Data cleared!");
+    }
+
+</script>
